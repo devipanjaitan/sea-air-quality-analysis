@@ -75,7 +75,7 @@ Only 32.2% of SEA cities achieve "Good" air quality, while 51.3% sit in "Moderat
 
 ### 5. Interactive Pollution Map
 
-**[View Interactive Map](images/sea_pollution_map.html)** — click any city marker for AQI details.
+****[View Interactive Map](https://devipanjaitan.github.io/sea-air-quality-analysis/images/sea_pollution_map.html)**** — click any city marker for AQI details.
 
 The map reveals a clear pollution concentration across Java island. Jakarta (AQI 197) and Bandung (198) are the most polluted mapped cities, both approaching the "Very Unhealthy" threshold and serving tens of millions of residents. In contrast, Chiang Mai (20) and Phuket (43) in Thailand achieve "Good" AQI — showing that national averages can mask dramatic local variation within the same country.
 
