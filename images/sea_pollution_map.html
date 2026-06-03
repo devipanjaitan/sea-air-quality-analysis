@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_95b7f992d7f5b4242f0e2ee64aa8e538 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/gh/python-visualization/folium@main/folium/templates/leaflet_heat.min.js"></script>
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+     background: white; padding: 12px; border-radius: 8px;
+     border: 1px solid #ccc; font-size: 13px;">
+    <b>AQI Legend</b><br>
+    <span style="color:green">●</span> Good (0–50)<br>
+    <span style="color:blue">●</span> Moderate (51–100)<br>
+    <span style="color:orange">●</span> Unhealthy Sensitive (101–150)<br>
+    <span style="color:red">●</span> Unhealthy (151–200)<br>
+    <span style="color:darkred">●</span> Very Unhealthy (200+)
+</div>
+    
+            <div class="folium-map" id="map_95b7f992d7f5b4242f0e2ee64aa8e538" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_95b7f992d7f5b4242f0e2ee64aa8e538 = L.map(
+                "map_95b7f992d7f5b4242f0e2ee64aa8e538",
+                {
+                    center: [5.0, 110.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 4,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_bc54c63ac5c7e97bee6caf7dd03d5117 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_bc54c63ac5c7e97bee6caf7dd03d5117.addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+            var circle_marker_2709c12268ad676f5be5dba344bd0c3d = L.circleMarker(
+                [7.8804, 98.3923],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_3ab9c45ffbdb1cbb134d2a7717899bb3 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2aa3e88cc2449668f2028c7cd3c7d477 = $(`<div id="html_2aa3e88cc2449668f2028c7cd3c7d477" style="width: 100.0%; height: 100.0%;"><b>Phuket, Thailand</b><br>             AQI: 43<br>             Category: Good<br>             PM2.5 AQI: 43</div>`)[0];
+                popup_3ab9c45ffbdb1cbb134d2a7717899bb3.setContent(html_2aa3e88cc2449668f2028c7cd3c7d477);
+            
+        
+
+        circle_marker_2709c12268ad676f5be5dba344bd0c3d.bindPopup(popup_3ab9c45ffbdb1cbb134d2a7717899bb3)
+        ;
+
+        
+    
+    
+            circle_marker_2709c12268ad676f5be5dba344bd0c3d.bindTooltip(
+                `<div>
+                     Phuket: AQI 43
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a7223f4f8f3180a08e2162eaa2a22bc5 = L.circleMarker(
+                [-2.9761, 104.7754],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_2df82fac40efef123594832d194d9018 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_ec07cdf2b36d6c55de70fe43ae54aa4b = $(`<div id="html_ec07cdf2b36d6c55de70fe43ae54aa4b" style="width: 100.0%; height: 100.0%;"><b>Palembang, Indonesia</b><br>             AQI: 74<br>             Category: Moderate<br>             PM2.5 AQI: 74</div>`)[0];
+                popup_2df82fac40efef123594832d194d9018.setContent(html_ec07cdf2b36d6c55de70fe43ae54aa4b);
+            
+        
+
+        circle_marker_a7223f4f8f3180a08e2162eaa2a22bc5.bindPopup(popup_2df82fac40efef123594832d194d9018)
+        ;
+
+        
+    
+    
+            circle_marker_a7223f4f8f3180a08e2162eaa2a22bc5.bindTooltip(
+                `<div>
+                     Palembang: AQI 74
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fa0d33f500835c0632f491be89d61060 = L.circleMarker(
+                [-6.9175, 107.6191],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.2, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_2cafb40b0cb29d1ceda86adf4a058b30 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_60fe865c15f4b72a024840df2b742ee1 = $(`<div id="html_60fe865c15f4b72a024840df2b742ee1" style="width: 100.0%; height: 100.0%;"><b>Bandung, Indonesia</b><br>             AQI: 198<br>             Category: Unhealthy<br>             PM2.5 AQI: 198</div>`)[0];
+                popup_2cafb40b0cb29d1ceda86adf4a058b30.setContent(html_60fe865c15f4b72a024840df2b742ee1);
+            
+        
+
+        circle_marker_fa0d33f500835c0632f491be89d61060.bindPopup(popup_2cafb40b0cb29d1ceda86adf4a058b30)
+        ;
+
+        
+    
+    
+            circle_marker_fa0d33f500835c0632f491be89d61060.bindTooltip(
+                `<div>
+                     Bandung: AQI 198
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_55199df4faef5c7748dffb333fed8180 = L.circleMarker(
+                [-7.2575, 112.7521],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.133333333333333, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_928ae696fd53b7138a17750b8942bcbe = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d1ea8d14a5e70e12452bc3f626b19496 = $(`<div id="html_d1ea8d14a5e70e12452bc3f626b19496" style="width: 100.0%; height: 100.0%;"><b>Surabaya, Indonesia</b><br>             AQI: 152<br>             Category: Unhealthy<br>             PM2.5 AQI: 152</div>`)[0];
+                popup_928ae696fd53b7138a17750b8942bcbe.setContent(html_d1ea8d14a5e70e12452bc3f626b19496);
+            
+        
+
+        circle_marker_55199df4faef5c7748dffb333fed8180.bindPopup(popup_928ae696fd53b7138a17750b8942bcbe)
+        ;
+
+        
+    
+    
+            circle_marker_55199df4faef5c7748dffb333fed8180.bindTooltip(
+                `<div>
+                     Surabaya: AQI 152
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_90cc014dfeeb9b808d17a0a2a542a522 = L.circleMarker(
+                [3.139, 101.6869],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_47ef11edef9898b957289b94f6de7ecc = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_88b12e92f8c39a09230a7bd347453c8a = $(`<div id="html_88b12e92f8c39a09230a7bd347453c8a" style="width: 100.0%; height: 100.0%;"><b>Kuala Lumpur, Malaysia</b><br>             AQI: 76<br>             Category: Moderate<br>             PM2.5 AQI: 76</div>`)[0];
+                popup_47ef11edef9898b957289b94f6de7ecc.setContent(html_88b12e92f8c39a09230a7bd347453c8a);
+            
+        
+
+        circle_marker_90cc014dfeeb9b808d17a0a2a542a522.bindPopup(popup_47ef11edef9898b957289b94f6de7ecc)
+        ;
+
+        
+    
+    
+            circle_marker_90cc014dfeeb9b808d17a0a2a542a522.bindTooltip(
+                `<div>
+                     Kuala Lumpur: AQI 76
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bd322d91c4b8f7d0d54201c1fb05c465 = L.circleMarker(
+                [3.5952, 98.6722],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_d6fd5ceed7ca750d44b3b263a9b3a3a2 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4b0371d60c09096909433bb7b7df3732 = $(`<div id="html_4b0371d60c09096909433bb7b7df3732" style="width: 100.0%; height: 100.0%;"><b>Medan, Indonesia</b><br>             AQI: 101<br>             Category: Unhealthy for Sensitive Groups<br>             PM2.5 AQI: 101</div>`)[0];
+                popup_d6fd5ceed7ca750d44b3b263a9b3a3a2.setContent(html_4b0371d60c09096909433bb7b7df3732);
+            
+        
+
+        circle_marker_bd322d91c4b8f7d0d54201c1fb05c465.bindPopup(popup_d6fd5ceed7ca750d44b3b263a9b3a3a2)
+        ;
+
+        
+    
+    
+            circle_marker_bd322d91c4b8f7d0d54201c1fb05c465.bindTooltip(
+                `<div>
+                     Medan: AQI 101
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d8ce93688e948d5bb86e7bc390bb5107 = L.circleMarker(
+                [13.7563, 100.5018],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_521d431cfa2562eea87ce012688a5cc2 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e34dd6d0e20c92b692e8896e681b2182 = $(`<div id="html_e34dd6d0e20c92b692e8896e681b2182" style="width: 100.0%; height: 100.0%;"><b>Bangkok, Thailand</b><br>             AQI: 69<br>             Category: Moderate<br>             PM2.5 AQI: 69</div>`)[0];
+                popup_521d431cfa2562eea87ce012688a5cc2.setContent(html_e34dd6d0e20c92b692e8896e681b2182);
+            
+        
+
+        circle_marker_d8ce93688e948d5bb86e7bc390bb5107.bindPopup(popup_521d431cfa2562eea87ce012688a5cc2)
+        ;
+
+        
+    
+    
+            circle_marker_d8ce93688e948d5bb86e7bc390bb5107.bindTooltip(
+                `<div>
+                     Bangkok: AQI 69
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e4b67739546f08169d9934cbf8d61161 = L.circleMarker(
+                [21.9588, 96.0891],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_e564c987d956cc2f4d31d873ec86e1aa = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_559a2336d8a26ab3e8e7503c03710a0a = $(`<div id="html_559a2336d8a26ab3e8e7503c03710a0a" style="width: 100.0%; height: 100.0%;"><b>Mandalay, Myanmar</b><br>             AQI: 71<br>             Category: Moderate<br>             PM2.5 AQI: 71</div>`)[0];
+                popup_e564c987d956cc2f4d31d873ec86e1aa.setContent(html_559a2336d8a26ab3e8e7503c03710a0a);
+            
+        
+
+        circle_marker_e4b67739546f08169d9934cbf8d61161.bindPopup(popup_e564c987d956cc2f4d31d873ec86e1aa)
+        ;
+
+        
+    
+    
+            circle_marker_e4b67739546f08169d9934cbf8d61161.bindTooltip(
+                `<div>
+                     Mandalay: AQI 71
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_feaa661be70a25cf8f464accd0c06183 = L.circleMarker(
+                [1.3521, 103.8198],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_e503b515e09804709ebafb706cf08b17 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_6f7cbdc4d398cc372afb4a354236f13e = $(`<div id="html_6f7cbdc4d398cc372afb4a354236f13e" style="width: 100.0%; height: 100.0%;"><b>Singapore, Singapore</b><br>             AQI: 91<br>             Category: Moderate<br>             PM2.5 AQI: 91</div>`)[0];
+                popup_e503b515e09804709ebafb706cf08b17.setContent(html_6f7cbdc4d398cc372afb4a354236f13e);
+            
+        
+
+        circle_marker_feaa661be70a25cf8f464accd0c06183.bindPopup(popup_e503b515e09804709ebafb706cf08b17)
+        ;
+
+        
+    
+    
+            circle_marker_feaa661be70a25cf8f464accd0c06183.bindTooltip(
+                `<div>
+                     Singapore: AQI 91
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2e11ab477b90539b28c01e5d4f9e202d = L.circleMarker(
+                [14.5995, 120.9842],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.733333333333333, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_7f723f6de82a9c3402cef8da4846e4d7 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_90ad11f80ba6d59a3ac94fcdb4d40451 = $(`<div id="html_90ad11f80ba6d59a3ac94fcdb4d40451" style="width: 100.0%; height: 100.0%;"><b>Manila, Philippines</b><br>             AQI: 131<br>             Category: Unhealthy for Sensitive Groups<br>             PM2.5 AQI: 131</div>`)[0];
+                popup_7f723f6de82a9c3402cef8da4846e4d7.setContent(html_90ad11f80ba6d59a3ac94fcdb4d40451);
+            
+        
+
+        circle_marker_2e11ab477b90539b28c01e5d4f9e202d.bindPopup(popup_7f723f6de82a9c3402cef8da4846e4d7)
+        ;
+
+        
+    
+    
+            circle_marker_2e11ab477b90539b28c01e5d4f9e202d.bindTooltip(
+                `<div>
+                     Manila: AQI 131
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c68e228e71b006e3439bced300ea6319 = L.circleMarker(
+                [7.1907, 125.4553],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_d49d034f05b241cea418d49acb67d147 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a7668c5491eb1cb782584a6e4f3f071d = $(`<div id="html_a7668c5491eb1cb782584a6e4f3f071d" style="width: 100.0%; height: 100.0%;"><b>Davao, Philippines</b><br>             AQI: 87<br>             Category: Moderate<br>             PM2.5 AQI: 87</div>`)[0];
+                popup_d49d034f05b241cea418d49acb67d147.setContent(html_a7668c5491eb1cb782584a6e4f3f071d);
+            
+        
+
+        circle_marker_c68e228e71b006e3439bced300ea6319.bindPopup(popup_d49d034f05b241cea418d49acb67d147)
+        ;
+
+        
+    
+    
+            circle_marker_c68e228e71b006e3439bced300ea6319.bindTooltip(
+                `<div>
+                     Davao: AQI 87
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0781bc52f1ef3766afaf8c3fd523ea39 = L.circleMarker(
+                [1.4927, 103.7414],
+                {"bubblingMouseEvents": true, "color": "orange", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "orange", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_544d4667f41a645508dd809e50f97355 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_1750c8e7944804d12cce5b60c68bf98f = $(`<div id="html_1750c8e7944804d12cce5b60c68bf98f" style="width: 100.0%; height: 100.0%;"><b>Johor Bahru, Malaysia</b><br>             AQI: 107<br>             Category: Unhealthy for Sensitive Groups<br>             PM2.5 AQI: 107</div>`)[0];
+                popup_544d4667f41a645508dd809e50f97355.setContent(html_1750c8e7944804d12cce5b60c68bf98f);
+            
+        
+
+        circle_marker_0781bc52f1ef3766afaf8c3fd523ea39.bindPopup(popup_544d4667f41a645508dd809e50f97355)
+        ;
+
+        
+    
+    
+            circle_marker_0781bc52f1ef3766afaf8c3fd523ea39.bindTooltip(
+                `<div>
+                     Johor Bahru: AQI 107
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_48a7f4d3e0e5450dbce70ca1490caef3 = L.circleMarker(
+                [-6.2088, 106.8456],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "red", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 13.133333333333333, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_6ad09f5c565973e6c9ee97a571ad7383 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_fb1cedcf3955886fc576731cca68f42c = $(`<div id="html_fb1cedcf3955886fc576731cca68f42c" style="width: 100.0%; height: 100.0%;"><b>Jakarta, Indonesia</b><br>             AQI: 197<br>             Category: Unhealthy<br>             PM2.5 AQI: 155</div>`)[0];
+                popup_6ad09f5c565973e6c9ee97a571ad7383.setContent(html_fb1cedcf3955886fc576731cca68f42c);
+            
+        
+
+        circle_marker_48a7f4d3e0e5450dbce70ca1490caef3.bindPopup(popup_6ad09f5c565973e6c9ee97a571ad7383)
+        ;
+
+        
+    
+    
+            circle_marker_48a7f4d3e0e5450dbce70ca1490caef3.bindTooltip(
+                `<div>
+                     Jakarta: AQI 197
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0fcdacd7f42bbcbda37b5b9dbe54f53d = L.circleMarker(
+                [18.7883, 98.9853],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "green", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8, "stroke": true, "weight": 3}
+            ).addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+    
+        var popup_95363404205734e429c879803192b818 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_da02e12210ef349f2de0fbe8a058b70a = $(`<div id="html_da02e12210ef349f2de0fbe8a058b70a" style="width: 100.0%; height: 100.0%;"><b>Chiang Mai, Thailand</b><br>             AQI: 20<br>             Category: Good<br>             PM2.5 AQI: 20</div>`)[0];
+                popup_95363404205734e429c879803192b818.setContent(html_da02e12210ef349f2de0fbe8a058b70a);
+            
+        
+
+        circle_marker_0fcdacd7f42bbcbda37b5b9dbe54f53d.bindPopup(popup_95363404205734e429c879803192b818)
+        ;
+
+        
+    
+    
+            circle_marker_0fcdacd7f42bbcbda37b5b9dbe54f53d.bindTooltip(
+                `<div>
+                     Chiang Mai: AQI 20
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var heat_map_114f66a209172fd9d0ed43cb5842fd52 = L.heatLayer(
+                [[7.8804, 98.3923, 43], [-2.9761, 104.7754, 74], [-6.9175, 107.6191, 198], [-7.2575, 112.7521, 152], [3.139, 101.6869, 76], [3.5952, 98.6722, 101], [13.7563, 100.5018, 69], [21.9588, 96.0891, 71], [1.3521, 103.8198, 91], [14.5995, 120.9842, 131], [7.1907, 125.4553, 87], [1.4927, 103.7414, 107], [-6.2088, 106.8456, 197], [18.7883, 98.9853, 20]],
+                {
+  "minOpacity": 0.5,
+  "maxZoom": 18,
+  "radius": 40,
+  "blur": 25,
+  "gradient": {
+  0.4: "blue",
+  0.6: "yellow",
+  0.8: "orange",
+  1.0: "red",
+},
+}
+            );
+        
+    
+            heat_map_114f66a209172fd9d0ed43cb5842fd52.addTo(map_95b7f992d7f5b4242f0e2ee64aa8e538);
+        
+</script>
+</html>
